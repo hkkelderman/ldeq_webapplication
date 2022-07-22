@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} LDEQ Permit Status Alert {% endblock %}
+
+{% block content %}
+
+<div class="header-row" id="header-row" style="padding: 0px; overflow: hidden; height: 200px;">
+  <div class="container-fluid" style="padding: 0px">
+    <div class="row">
+      <img src="{% static 'images/banner_1.jpg' %}">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card" style="width:100%" >
+        <div class="card-body text-center">
+          <p>
+            <a href = "https://www.deq.louisiana.gov/"> Louisiana's Department of Environmental Quality</a> operates a <a href = "https://internet.deq.louisiana.gov/portal/ONLINESERVICES/CHECK-PERMIT-STATUS"> webpage</a> that allows for individuals to check the permit status of regulated facilities within the state, using either their AI number or the regulated facility's name. The <a href="https://environmentalintegrity.org/">Environmental Integrity Project</a> has created this web application to monitor LDEQ's webpage and send out weekly updates on changes to any of the permits statuses.
+            <br>
+            <br>
+            To sign up for weekly updates, please create an account below.
+            <br>
+            <br>
+            <button type="button" class="btn btn-secondary" href="{% url 'register' %}">Register</button>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="width:100%">
+        <div class="card-body">
+          <img src="{% static 'images/front_page.png' %}" class="img-thumbnail">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

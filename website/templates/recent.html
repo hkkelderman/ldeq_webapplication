@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %} LDEQ Permit Status Alert {% endblock %}
+{% block content %}
+
+<div class="header-row" id="header-row" style="padding: 0px; overflow: hidden; height: 75px;">
+  <div class="container-fluid" style="padding: 0px">
+    <div class="row">
+    	<div class="card" style="width:100%">
+      		<p> This web application most recently scraped LDEQ's permit database on <strong>{{ recent_date }}</strong> and found <strong>{{ num_updates }}</strong> permit updates since the update prior, which was on <strong>{{ last_date }}</strong>. The next update will take place on <strong>{{ next_date }}</strong>.</p>
+  		</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">AI No.</th>
+				<th scope="col">Facility</th>
+				<th scope="col">Tracking No.</th>
+				<th scope="col">Media</th>
+				<th scope="col">Parish</th>
+				<th scope="col">Action</th>
+				<th scope="col">Permit No.</th>
+				<th scope="col">Status</th>
+				<th scope="col">Received</th>
+				<th scope="col">Status Date</th>
+				<th scope="col">Effective Start</th>
+				<th scope="col">Expiration</th>
+			</tr>
+		</thead>
+		{% if recent %}
+		{% for permit in recent %}
+		<tbody>
+			<tr>
+				<td>{{ permit.MASTER_AI_ID }}</td>
+				<td>{{ permit.MASTER_AI_NAME }}</td>
+				<td>{{ permit.ACT_TRACKING_NO }}</td>
+				<td>{{ permit.MEDIA }}</td>
+				<td>{{ permit.PARISH }}</td>
+				<td>{{ permit.PERMIT_NO }}</td>
+				<td>{{ permit.ACTION_TYPE }}</td>
+				<td>{{ permit.STATUS }}</td>
+				<td>{{ permit.RECEIVED_DATE }}</td>
+				<td>{{ permit.STATUS_DATE }}</td>
+				<td>{{ permit.EFFECTIVE_START_DATE }}</td>
+				<td>{{ permit.EXPIRATION_DATE }}</td>
+			</tr>
+		</tbody>
+		{% endfor %}
+	</table>
+	{% endif %}
+	</div>
+</div>
+{% endblock %}
