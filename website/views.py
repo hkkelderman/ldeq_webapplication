@@ -13,10 +13,12 @@ def recent(request):
 	next_date = recent_upload_date + datetime.timedelta(days=7)
 	recent_data = Permit.objects.filter(date_uploaded = recent_upload_date)
 	num_updates = len(recent_data)
+	check = Permit.objects.latest('RECEIVED_DATE').RECEIVED_DATE
 	context = {'recent': recent_data,
 	'recent_date': recent_upload_date,
 	'num_updates' : num_updates,
 	'next_date' : next_date,
-	'last_date': last_date
+	'last_date': last_date,
+	'check': check
 	}
 	return render(request, 'recent.html', context)

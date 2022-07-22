@@ -2,19 +2,22 @@
 {% block title %} LDEQ Permit Status Alert {% endblock %}
 {% block content %}
 
-<div class="header-row" id="header-row" style="padding: 0px; overflow: hidden; height: 75px;">
+<h1>Recent Updates</h1>
+
+<div class="header-row" id="header-row" style="padding: 0px; height: 75px;">
   <div class="container-fluid" style="padding: 0px">
     <div class="row">
-    	<div class="card" style="width:100%">
+    	<div class="card" style="width:100%; border-style: solid; border-width: 2px; background-color: #FFFDFD; border-color: #687864">
       		<p> This web application most recently scraped LDEQ's permit database on <strong>{{ recent_date }}</strong> and found <strong>{{ num_updates }}</strong> permit updates since the update prior, which was on <strong>{{ last_date }}</strong>. The next update will take place on <strong>{{ next_date }}</strong>.</p>
   		</div>
     </div>
   </div>
 </div>
 
-<div class="container">
+<br>
+<div class="container-fluid" style="padding: 0px">
   <div class="row">
-	<table class="table">
+	<table class="table" style="background-color: #FFFDFD;">
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">AI No.</th>
@@ -43,10 +46,10 @@
 				<td>{{ permit.PERMIT_NO }}</td>
 				<td>{{ permit.ACTION_TYPE }}</td>
 				<td>{{ permit.STATUS }}</td>
-				<td>{{ permit.RECEIVED_DATE }}</td>
-				<td>{{ permit.STATUS_DATE }}</td>
-				<td>{{ permit.EFFECTIVE_START_DATE }}</td>
-				<td>{{ permit.EXPIRATION_DATE }}</td>
+				<td>{{ permit.RECEIVED_DATE|date:"m-d-y" }}</td>
+				<td>{{ permit.STATUS_DATE|date:"m-d-y" }}</td>
+				<td>{{ permit.EFFECTIVE_START_DATE|date:"m-d-y" }}</td>
+				<td>{{ permit.EXPIRATION_DATE|date:"m-d-y" }}</td>
 			</tr>
 		</tbody>
 		{% endfor %}
